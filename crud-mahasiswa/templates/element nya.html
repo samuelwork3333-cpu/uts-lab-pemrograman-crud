@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>Detail Mahasiswa</h1>
+  <dl>
+    <dt>NIM</dt><dd>{{ m.nim }}</dd>
+    <dt>Nama</dt><dd>{{ m.nama }}</dd>
+    <dt>Program Studi</dt><dd>{{ m.program_studi }}</dd>
+    <dt>Angkatan</dt><dd>{{ m.angkatan }}</dd>
+    <dt>IPK</dt><dd>{{ "%.2f"|format(m.ipk) }}</dd>
+    <dt>Lama Studi</dt><dd>{{ m.lama_studi }} tahun</dd>
+  </dl>
+  <p class="actions">
+    <a class="btn" href="{{ url_for('ubah', nim=m.nim) }}">Ubah</a>
+    <a class="btn sec" href="{{ url_for('index') }}">Kembali</a>
+  </p>
+</div>
+{% endblock %}

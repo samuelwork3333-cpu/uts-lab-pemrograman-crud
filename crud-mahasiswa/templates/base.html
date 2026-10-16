@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Data Mahasiswa{% endblock %}</title>
+  <style>
+    :root { --bg:#f6f7f9; --card:#fff; --text:#1f2937; --muted:#6b7280;
+            --primary:#1d4ed8; --danger:#b91c1c; --ok:#047857; --line:#e5e7eb; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+           background:var(--bg); color:var(--text); }
+    header { background:var(--primary); color:#fff; padding:16px 24px; }
+    header a { color:#fff; text-decoration:none; font-weight:600; font-size:1.2rem; }
+    main { max-width:960px; margin:24px auto; padding:0 16px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:20px; }
+    .bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+    h1 { margin:0; font-size:1.4rem; }
+    table { width:100%; border-collapse:collapse; }
+    th, td { text-align:left; padding:10px 8px; border-bottom:1px solid var(--line); }
+    th { color:var(--muted); font-weight:600; font-size:.9rem; }
+    .btn { display:inline-block; padding:8px 14px; border-radius:6px; border:0; cursor:pointer;
+           background:var(--primary); color:#fff; text-decoration:none; font-size:.9rem; }
+    .btn.sec { background:#e5e7eb; color:var(--text); }
+    .btn.del { background:var(--danger); }
+    .btn.sm { padding:5px 10px; font-size:.82rem; }
+    .actions { display:flex; gap:6px; flex-wrap:wrap; }
+    .actions form { margin:0; }
+    label { display:block; margin:12px 0 4px; font-weight:600; }
+    input { width:100%; padding:9px; border:1px solid #cbd5e1; border-radius:6px; font-size:1rem; }
+    input[readonly] { background:#f1f5f9; }
+    .flash { padding:10px 14px; border-radius:6px; margin-bottom:10px; }
+    .flash.error { background:#fee2e2; color:var(--danger); }
+    .flash.success { background:#d1fae5; color:var(--ok); }
+    .empty { color:var(--muted); text-align:center; padding:24px; }
+    dl { display:grid; grid-template-columns:160px 1fr; gap:8px 12px; }
+    dt { color:var(--muted); } dd { margin:0; }
+    .scroll { overflow-x:auto; }
+  </style>
+</head>
+<body>
+  <header><a href="{{ url_for('index') }}">Data Mahasiswa</a></header>
+  <main>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for cat, msg in messages %}
+        <div class="flash {{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

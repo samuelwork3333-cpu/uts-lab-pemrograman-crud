@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h1>{{ "Tambah Mahasiswa" if mode == "tambah" else "Ubah Mahasiswa" }}</h1>
+  <form method="post" novalidate>
+    <label for="nim">NIM</label>
+    <input id="nim" name="nim" inputmode="numeric" value="{{ m.get('nim', '') }}"
+           {% if mode == 'ubah' %}readonly{% endif %}>
+
+    <label for="nama">Nama</label>
+    <input id="nama" name="nama" value="{{ m.get('nama', '') }}">
+
+    <label for="program_studi">Program Studi</label>
+    <input id="program_studi" name="program_studi" value="{{ m.get('program_studi', '') }}">
+
+    <label for="angkatan">Angkatan</label>
+    <input id="angkatan" name="angkatan" inputmode="numeric" placeholder="2023"
+           value="{{ m.get('angkatan', '') }}">
+
+    <label for="ipk">IPK (0.00 - 4.00)</label>
+    <input id="ipk" name="ipk" placeholder="3.50" value="{{ m.get('ipk', '') }}">
+
+    <p class="actions" style="margin-top:20px">
+      <button class="btn" type="submit">Simpan</button>
+      <a class="btn sec" href="{{ url_for('index') }}">Batal</a>
+    </p>
+  </form>
+</div>
+{% endblock %}

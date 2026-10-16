@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <div class="bar">
+    <h1>Daftar Mahasiswa</h1>
+    <a class="btn" href="{{ url_for('tambah') }}">Tambah mahasiswa</a>
+  </div>
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr><th>NIM</th><th>Nama</th><th>Program Studi</th><th>Angkatan</th>
+          <th>IPK</th><th>Lama Studi</th><th>Aksi</th></tr>
+    </thead>
+    <tbody>
+    {% for m in mahasiswa %}
+      <tr>
+        <td>{{ m.nim }}</td>
+        <td>{{ m.nama }}</td>
+        <td>{{ m.program_studi }}</td>
+        <td>{{ m.angkatan }}</td>
+        <td>{{ "%.2f"|format(m.ipk) }}</td>
+        <td>{{ m.lama_studi }} tahun</td>
+        <td class="actions">
+          <a class="btn sec sm" href="{{ url_for('detail', nim=m.nim) }}">Detail</a>
+          <a class="btn sm" href="{{ url_for('ubah', nim=m.nim) }}">Ubah</a>
+          <form method="post" action="{{ url_for('hapus', nim=m.nim) }}"
+                onsubmit="return confirm('Hapus {{ m.nama }}?');">
+            <button class="btn del sm" type="submit">Hapus</button>
+          </form>
+        </td>
+      </tr>
+    {% else %}
+      <tr><td colspan="7" class="empty">Belum ada data. Klik "Tambah mahasiswa" untuk memulai.</td></tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+{% endblock %}

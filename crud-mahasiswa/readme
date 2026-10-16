@@ -1,0 +1,22 @@
+Aplikasi web CRUD untuk mengelola data mahasiswa menggunakan Python Flask dan database SQLite.
+
+fitur sederhana
+- Menampilkan data mahasiswa
+- Menambahkan data mahasiswa
+- Melihat detail mahasiswa
+- Mengubah data mahasiswa
+- Menghapus data mahasiswa
+- Validasi data input
+
+pake apa aja
+- Python
+- Flask
+- SQLite
+- HTML
+
+cara menjalankan
+1. Install library dengan perintah `pip install -r requirements.txt`.
+2. Jalankan aplikasi dengan perintah `python app.py`.
+3. Buka browser dan akses `http://127.0.0.1:5000`.
+
+bismilah A
